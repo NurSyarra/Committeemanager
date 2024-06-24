@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use App\Profile;
+
 
 class User extends Authenticatable
 {
@@ -38,11 +38,32 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    // protected static function boot()
+    // {
+    //     parent::boot();
+
+    //     static::created(function ($user){
+    //         $user->organiserprofile()->create([
+    //             'about' => $user->name,
+    //         ]);
+    //     });
+    // }   
+
     public function posts(){
         return $this->hasMany('App\POst');
     }
 
-    public function profile(){
+
+       public function profile(){
         return $this->hasOne(Profile::class);
+    }
+
+    public function Student(){
+        return $this->hasMany('App\ApplyEvent');
+    }
+
+
+    public function organiserprofile(){
+        return $this->hasOne('App\OrganiserProfiles');
     }
 }

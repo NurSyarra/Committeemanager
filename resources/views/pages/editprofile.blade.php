@@ -10,8 +10,8 @@
 <div class="container">
     <br>
     <center>
-        <div><img src="/storage/{{$user->profile->avatar}}" ></div>
-    </center>
+        <img src="/storage/images/{{$user->profile->image}}" style="height: 25%; width: 19%; border-radius: 50%; padding-bottom: 10px">
+    </center><br>
     <div class="row my-2">
         <div class="col-lg-8 order-lg-2">
             
@@ -39,7 +39,8 @@
                             
 
                         <div class="form-group row">
-                            <label for="matric_no" class="col-lg-3 col-form-label form-control-label">{{ __('Matric No.') }}</label>
+                            <label for="matric_no" class="col-lg-3 col-form-label form-control-label">Matric No. <span style="color: red">*</span>
+                            </label>
 
                             <div class="col-lg-9">
                                 <input type="textarea" id="matric" class="form-control @error('matric') is-invalid @enderror" name="matric"
@@ -54,7 +55,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="kulliyyah" class="col-lg-3 col-form-label form-control-label">{{ __('Kulliyyah') }}</label>
+                            <label for="kulliyyah" class="col-lg-3 col-form-label form-control-label">Kulliyyah <span style="color: red">*</span></label>
 
                             <div class="col-lg-9">
                                 <input type="textarea" id="kulliyyah" class="form-control @error('kulliyyah') is-invalid @enderror" name="kulliyyah" 
@@ -69,7 +70,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="level" class="col-lg-3 col-form-label form-control-label">{{ __('Level') }}</label>
+                            <label for="level" class="col-lg-3 col-form-label form-control-label">Level <span style="color: red">*</span></label>
 
                             <div class="col-lg-9">
                                 <select class="form-control" id="level" type="level" class="form-control @error('level') is-invalid @enderror" name="level"
@@ -91,7 +92,7 @@
 
 
                         <div class="form-group row">
-                            <label for="matric_no" class="col-lg-3 col-form-label form-control-label">{{ __('Phone No.') }}</label>
+                            <label for="phone" class="col-lg-3 col-form-label form-control-label">Phone No. <span style="color: red">*</span></label>
 
                             <div class="col-lg-9">
                                 <input id="phone" type="textarea" class="form-control @error('phone') is-invalid @enderror" name="phone" 
@@ -106,11 +107,24 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="matric_no" class="col-lg-3 col-form-label form-control-label">{{ __('Skills') }}</label>
+                            <label for="skills" class="col-lg-3 col-form-label form-control-label">{{ __('Skills') }}</label>
 
                             <div class="col-lg-9">
                                 <input id="skills" type="textarea" class="form-control @error('skills') is-invalid @enderror" name="skills" 
                                 value="{{ old('skills') ?? $user->profile->skills }}">
+
+                                @error('skills')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="image" class="col-lg-3 col-form-label form-control-label">{{ __('Profile Picture') }}</label>
+
+                            <div class="col-lg-9">
+                                <input type="file" name="image" class="form-control"> 
 
                                 @error('skills')
                                     <span class="invalid-feedback" role="alert">
@@ -167,14 +181,6 @@
                 </div>
             </div>
             <br>
-            <div class="card">
-                <div class="card-header">Profile Picture</div>
-                <div class="card-body">
-                    <input type="file" name="profile_picture" class="form-control">
-                    <br>
-                </div>
-                
-            </div>
         </div>
          
         </div>

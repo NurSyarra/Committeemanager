@@ -21,7 +21,8 @@ class CreateProfileTable extends Migration
             $table->string('level')->nullable();
             $table->string('phone')->nullable();
             $table->string('skills')->nullable();
-            $table->string('avatar')->default('image/avatar.png');
+            $table->string('image')->default('noimage.png');
+
 
             $table->timestamps();
 

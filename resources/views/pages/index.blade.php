@@ -1,6 +1,9 @@
 <link rel="stylesheet" type="text/css" href="css/main.css">
 
-@extends('layouts.app')
+<style type="text/css">
+
+</style>
+@extends('layouts.app_carousel')
 
 @section('content')
 
@@ -92,40 +95,30 @@
 <hr>
 
 <div class="bs-example">
-    <h4>Upcoming Events</h4>    
+    <h5>Upcoming Events</h5>
     <div class="list-group">
-        <a href="#" class="list-group-item list-group-item-action">
-            <div class="d-flex w-100 justify-content-between">
-                <h4>Event Title</h4>
-                <button type="button" class="btn btn-secondary btn-sm reminder">Notify me</button>
-            </div>
-            <p>
-              <strong>Details</strong>
+      @if(count($post) > 0)
+      @foreach($post as $posts)
 
-            </p>
-        </a>
-        
-        <a href="#" class="list-group-item list-group-item-action">
-            <div class="d-flex w-100 justify-content-between">
-                <h4>Event Title</h4>
-                <button type="button" class="btn btn-secondary btn-sm reminder">Notify me</button>
-            </div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sem tempor, varius quam at, luctus dui. Mauris magna metus, dapibus nec turpis vel, semper malesuada ante.</p>
-        </a>
+        <div href="#" class="list-group-item list-group-item-action ">
+          <div class="d-flex w-100 justify-content-between">
+            <h5>{{ $posts->EventName }}</h5>
+            <a href="{{ route('remind.show', ['id'=>$posts->id]) }}" class="btn btn-info">Remind Me</a>
+          </div>
+            <p class="upcomingEvent"> Description: {{ $posts->Description }} </p>
+            <p class="upcomingEvent"> Event Date: {{ $posts->EventDate}} </p> 
+        </div>
+        @endforeach
+        @else
+          <p>No upcoming event</p>
 
-                <a href="#" class="list-group-item list-group-item-action">
-            <div class="d-flex w-100 justify-content-between">
-                <h4>Event title</h4>
-                <button type="button" class="btn btn-secondary btn-sm reminder">Notify me</button>
-            </div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sem tempor, varius quam at, luctus dui. Mauris magna metus, dapibus nec turpis vel, semper malesuada ante.</p>
-        </a>
+    @endif
 
     </div>
 </div>
 
   </div>
     </main>
-    	</div>
+      </div>
 
 @endsection

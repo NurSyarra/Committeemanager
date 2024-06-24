@@ -1,0 +1,20 @@
+/* Footer */
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+
+.footer {
+  	background: #348781 !important;
+	height: 100px;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+.p-h6{
+	color: #ffffff;
+    text-decoration: none !important;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+    padding-left: 0;
+    border-left: transparent;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
